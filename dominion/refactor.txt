@@ -1,1 +1,27 @@
-This will be the file that contains a summary of the refactoring of the switching statement.
+refactor.txt - Eric Stevens
+
+This file contains a summary of the refactoring of the switching statement.
+
+Individual functions were coppied out of the switch statment to the bottome of dominion.c.
+
+The functions take the pointers to the gamestate.
+
+The functions take the values of other variables from the CardEffect function by refernce.
+
+Since the implementations in each case of the switch statement returns a value, the functions return the 
+same value as the case would have, and the case in the switch statements return the function call.
+
+Here are the functions that were refactored:
+	1. case: smithy > SmithyCard()
+	2. case: great_hall > GreatHallCard()
+	3. case: minion > MinionCard()
+	4. case: sea_hag > SeaHagCard()
+	5. case: embargo > EmbargoCard()
+
+All the fuction declarations can be found at the bottom of the dominion.h file. The function definitions
+can be found at the bottom of the dominion.c file. The calls to the refactored functions can be found in 
+switch statment in place of the old cases. Cases were commeted out in place to leave a reference.
+
+
+
+
