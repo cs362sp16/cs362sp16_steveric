@@ -1,0 +1,5 @@
+The unit testing i did came out with some intresting results.
+
+i found what i think to be bugs in a the isGameOver() function and the smithy function.
+
+
