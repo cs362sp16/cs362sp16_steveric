@@ -15,7 +15,9 @@
 #include <stdlib.h>
 
 
-int main () {
+int main ( int argc, char *argv[] ){
+	int seed = atoi(argv[1]);
+	srand(seed);
 
 	
 	int passes = 0; int fails = 0; // keeps track of case results
@@ -47,17 +49,38 @@ int main () {
 		
 		p->deckCount[player] = cardsInDeck;
 		
-		int outpostLocation = rand()%cardsInHand;
-		p->hand[player][outpostLocation]=outpost;
+		int smithyLocation = rand()%cardsInHand;
+		p->hand[player][smithyLocation]=smithy;
 		p->handCount[player]=cardsInHand;
 		
-		cardEffect(outpost, 0,0,0, p, outpostLocation, 0);
 		
-		if(p->outpostPlayed){passes++;}
-		else{fails++;}
+		int handBefore, handAfter, deckBefore, deckAfter;
+		
+		handBefore = p->handCount[player];
+		deckBefore = p->deckCount[player];
+		
+		SmithyCard( p, player, smithyLocation);
+		
+		handAfter = p->handCount[player];
+		deckAfter = p->deckCount[player];	
+		
+		if((handAfter==handBefore+2) && (deckBefore == deckAfter + 3)){passes++;}
+		else if(deckAfter == 0 && handAfter == handBefore + deckBefore -1){passes++;}
+		else{
+			fails++;
+		
+			printf("\nFailure: test %d", i);
+			printf("\nbefore call handCount = %d   ", handBefore);
+			printf("deckCount = %d   \n",deckBefore);
+		
+			printf("after call handCount = %d   ", handAfter);
+			printf("deckCount = %d   \n", deckAfter);
+		}
+	
 	
 	
 	}
+	
 	
 		
 			//result output

@@ -1,0 +1,38 @@
+This is the RandomTest.txt File
+
+The program can be compiled by typing "make all" or "make 
+random"
+
+The random testing programs generate different gamestates
+in order to try and gain as much coverage of the program
+as possible. Efforts were taken to maximise line and branch
+coverage for different parts of the code. This was done by 
+adding -f and -b tags to gcov and then inspecting the the
+results. Once it was known what parts of the code were not
+being covered the testing program was altered in order to 
+cover thoes lines or go to those branches.
+
+The smithyCard was able to get 100% branch and line coverage.
+This was easy because the smithyCard is a very simple card.
+
+The village card was also able to be 100% coverd line wise.
+There was no branch coverage on this card because the card
+has no branches.
+
+The adventurere card was very difficult for me to figure out.
+I was able to get the code mostly covered by line but had very
+little luck with branching and fault detection.
+
+The coverage for line detection will be better for random 
+testing. Programs are designed to test a function or part of 
+a function with as many different parameters as possible and
+aim them to cover as many lines as possible. My programs were
+written around the goal of achieving high coverage than a unit
+test would. 
+
+Fault detection will depend on the function our code segment
+being tested. In large code with illusive bugs i believe random 
+testing will be better at fault detection. If a code segment has
+very difinative behavior for a small number of possible outcomes
+I believe that unit testing will be better at finding faults.
+
