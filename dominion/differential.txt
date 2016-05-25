@@ -1,0 +1,18 @@
+Differential.txt
+
+To complie and run all code for this sections type "make diff".
+
+Abel to achieve 55% coverage, coverage output is in "diff.out".
+
+Differentiator code is in "run.c". Was able to achieve a difference
+in the number of cards in a the hand. The log of the diff is in the
+text file: "difffile.txt". 
+
+The diff code works when a full implementation of the dominion code
+(ie. dominion.c dominion.h rngs.c rngs.h imp.... and so on) is downloaded
+into a two seprate folders. The folder paths are then fed into the
+program as parameters. This setup is included in my submission for ease
+of compilation.
+
+
+		simply type "make diff" 

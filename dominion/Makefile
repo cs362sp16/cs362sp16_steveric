@@ -3,12 +3,18 @@ CFLAGS = -Wall -fpic -coverage -lm
 
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
+	
+interface.o: interface.h interface.c
+	gcc -c interface.c -g  $(CFLAGS)
 
 dominion.o: dominion.h dominion.c rngs.o
 	gcc -fprofile-arcs -ftest-coverage -c dominion.c -g  $(CFLAGS)
 
 playdom: dominion.o playdom.c
 	gcc -o playdom playdom.c -g dominion.o rngs.o $(CFLAGS)
+	
+playdom2: dominion.o interface.o playdom2.c
+	gcc -o playdom2 playdom2.c -g dominion.o rngs.o interface.o $(CFLAGS)
 
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
@@ -75,15 +81,15 @@ random:playdom player
 
 
 	gcc -fprofile-arcs -ftest-coverage randomtestcard1.c -g  dominion.o rngs.o interface.o $(CFLAGS)
-	./a 55
+	./a 42
 	gcov randomtestcard1.c > randomtestcard1.out
 	
 	gcc -fprofile-arcs -ftest-coverage randomtestcard2.c -g  dominion.o rngs.o interface.o $(CFLAGS)
-	./a 55
+	./a 42
 	gcov randomtestcard2.c > randomtestcard2.out
 	
 	gcc -fprofile-arcs -ftest-coverage randomtestadventurer.c -g  dominion.o rngs.o interface.o $(CFLAGS)
-	./a 55
+	./a 42
 	gcov randomtestadventurer.c > randomtestadventurer.out
 	
 	gcov -f -b dominion.c >> randomtestresults.out
@@ -97,7 +103,15 @@ random:playdom player
 	
 adven: playdom player 
 	
-	gcc randomtestadventurer.c -o rando -g  dominion.o rngs.o interface.o $(CFLAGS)
+	gcc randomtestadventurer.c -o randl -g  dominion.o rngs.o interface.o $(CFLAGS)
+	
+	
+diff: dominion.o player playdom
+	gcc -fprofile-arcs -ftest-coverage testdominion.c -g  dominion.o rngs.o interface.o $(CFLAGS)
+	./a 42
+	gcov -f -b dominion.c > diff.out
+
+	./run domin1 domin2 42
 	
 clean:
 	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM

@@ -15,10 +15,11 @@
 #include <stdlib.h>
 
 
-int main () {
+int main ( int argc, char *argv[] ){
+	int seed = atoi(argv[1]);
+	srand(seed);
+printf("\n%d\n",seed);
 
-	
-	srand(7);
 	
 	int passes = 0; int fails = 0; // keeps track of case results
 
@@ -33,58 +34,42 @@ int main () {
 
 	
 	//The test
-	int cases = 1000; //how many random numbers will be tested	
+	int cases = 100; //how many random numbers will be tested	
 	for(int i=0; i<cases; i++){
 
-		//int situation = (rand()%3)+1;
+		
 		
 		
 		int player = 0;
-		int cardsInDeck = rand()%20+6;
-		int cardsInHand = (rand()%5)+3;
+		int numOfTreasure = (rand()%3+2);
+		int cardsInDeck = (rand()%10)+numOfTreasure; 
+		int cardsInHand = 5;
 		
-		for(int i = 0 ; i<cardsInDeck; i++){p->deck[player][i] = (rand()%20)+7;}
-		for(int i = 0 ; i<cardsInHand; i++){p->hand[player][i] = (rand()%20)+7;}
+		for(int i = 0 ; i<cardsInDeck; i++){p->deck[player][i] = (rand()%20)+7;}// ensures no cards in deck are treasure
+		for(int i = 0 ; i<cardsInHand; i++){p->hand[player][i] = (rand()%27);}
 		
 		p->deckCount[player] = cardsInDeck;
-		
 		p->handCount[player]=cardsInHand;
 		
-		int numOfTreasure = (rand()%(cardsInDeck+cardsInHand)+2);
+		int secondGoldLoc;
 		for(int i=0; i<numOfTreasure; i++){
-
-			int deckOrHand = rand()%2;
-			//int treasureType = (rand()%3)+4;
-			int deckLoc=rand()%cardsInDeck;
-			int handLoc=rand()%cardsInHand;
-			int wasup;
-			if(deckOrHand){p->hand[player][handLoc]=gold;}
-			else{p->deck[player][deckLoc]=gold;}		
+			
+			int deckLoc=rand()%(cardsInDeck/numOfTreasure)+(i-1)*(cardsInDeck/numOfTreasure);
+			p->deck[player][deckLoc]=gold;
+			
+			if(i==2){secondGoldLoc=deckLoc;}		
 		}
 		
-		
-		int secondTreasure;
-		
-		/*for(int i=0; i<cardsInDeck;i++){
-			int count = 0;
-			if(p->hand[player][i]==gold;)
-			{
-				count++;
-				if(count==2){secondTreasure=i;}
-			}
-		}*/
-		
-		
-		
+
 		int adventurerLocation = rand()%cardsInHand;
 		p->hand[player][adventurerLocation]=adventurer;
 		
 		
-		if(cardsInHand==p->handCount){passes++;}
+		if(p->handCount[player] == 7){passes++;}
 		
 
 		
-		
+		printf("\ntick %d  numtres %d origdek %d \n",i,numOfTreasure,cardsInDeck);
 		cardEffect(adventurer, 0,0,0, p, adventurerLocation, 0);
 	
 	}

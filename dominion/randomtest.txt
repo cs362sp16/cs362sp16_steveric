@@ -21,7 +21,11 @@ has no branches.
 
 The adventurere card was very difficult for me to figure out.
 I was able to get the code mostly covered by line but had very
-little luck with branching and fault detection.
+little luck with branching and fault detection. Through the 
+random test process I did discover that there is a fatal flaw
+in the adventurer implementation. A failure occours when there
+are less than two treasure cards in a hand. This is bacause there
+is nothing preventing infinite loops from occouring.
 
 The coverage for line detection will be better for random 
 testing. Programs are designed to test a function or part of 

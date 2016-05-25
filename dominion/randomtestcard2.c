@@ -17,8 +17,6 @@
 
 int main ( int argc, char *argv[] ){
 	int seed = atoi(argv[1]);
-	printf("\n %s \n ", argv[1]);
-	printf("\n %d \n ", seed);//atoi(argv[1]));
 	srand(seed);
 
 	//printf("made it to in main");
