@@ -111,12 +111,12 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
 	    {
 	      //check if card is a 'Victory' Kingdom card
 	      if (kingdomCards[j] == great_hall || kingdomCards[j] == gardens)
-		{
-		  if (numPlayers == 2){ 
-		    state->supplyCount[i] = 8; 
-		  }
-		  else{ state->supplyCount[i] = 12; }
-		}
+			{
+			if (numPlayers == 2){ 
+				state->supplyCount[i] = 8; 
+			}
+			else{ state->supplyCount[i] = 12; }
+			}
 	      else
 		{
 		  state->supplyCount[i] = 10;
@@ -591,7 +591,7 @@ int getCost(int cardNumber)
     case duchy:
       return 5;
     case province:
-      return 8;
+      return 4;
     case copper:
       return 0;
     case silver:

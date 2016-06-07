@@ -43,7 +43,7 @@ int main (int argc, char** argv) {
 	strcat(command,argv[1]);
 	strcat(command,"/interface.c ");
 	strcat(command,argv[1]);
-	strcat(command,"/interface.h -o playdom2");
+	strcat(command,"/interface.h -o playdom21");
 	system(command);
 	printf("\n%s\n",command);
 

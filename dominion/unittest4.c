@@ -44,7 +44,7 @@ int values[27]={0,2,5,8,0,3,6,6,5,4,4,5,4,4,3,4,3,5,3,5,3,4,2,5,4,4,4};
 		
 	}
 	
-	printf("Passes %d  Fails %d",passes, fails);
+	printf("\n\nPasses %d  Fails %d\n\n",passes, fails);
 
 return 0;
 }

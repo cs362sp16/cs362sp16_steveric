@@ -1,0 +1,28 @@
+Smith Bug Report: 
+Date: June 6, 2016
+Report Author: Eric Stevens
+
+Description:
+This is a bug in the function playgreathall() in the dominion.c file. It
+is a bug that causes the rules of the card to not be followed properly.
+When this card is played it is supposed to allow the user to make another
+action by incrementing the numActions member variable. This functionality
+is not part of the implementaion.
+ 
+Occourance:
+Whenever the great hall card is played this problem will occour.
+
+Fix:
+Add the funtionality to increment the numActions member variable whenever
+the card is played. This should get rid of the bug completly.
+
+Severity:
+Medium severity. The game will not crash as a result of the bug, it just
+wont be following the rules of the game properly.
+
+Priority:
+This bug should be placed at high priority mostly because it is so easy
+to fix. 
+
+
+

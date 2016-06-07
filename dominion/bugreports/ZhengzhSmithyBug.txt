@@ -1,0 +1,31 @@
+Smith Bug Report: 
+Date: June 6, 2016
+Report Author: Eric Stevens
+
+Description:
+This bug is found in the playsmithy() funtion of the dominion.c file 
+lines 652 to 664. Playing of the smithy card is supposed to result in
+the player getting to draw three cards. Instead when playing the card 
+players will get to draw 25 cards. 
+
+Occourance:
+This bug will occour whenever the smithy card is played. It is simpily
+the wrong value set in the loop to continue the drawing of cards. 
+
+Fix:
+This can be dealt with by changing the bool statement on line 657 from
+i<25 to i<3.
+
+Severity:
+This bug is highly sever. The smithy card is a common card to play and 
+the fact that this card is functionly so differently than it should be 
+can cause a serious disruption to expected game play.
+
+Priority:
+The fixing of this bug should be considered high priority. Smithy is one
+of the most common cards played, almost every game will be effected by
+this bug. Also, the fix is so quick and easy that it can be taken care of
+without a large amount of resources.
+
+
+

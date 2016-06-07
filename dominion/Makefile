@@ -23,7 +23,10 @@ player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
 	
-all: playdom player random	
+all: playdom player 
+
+unittest4:
+	gcc unittest4.c -o unittest4 -g dominion.o rngs.o interface.o $(CFLAGS)
 	
 
 coverage: 
@@ -105,13 +108,24 @@ adven: playdom player
 	
 	gcc randomtestadventurer.c -o randl -g  dominion.o rngs.o interface.o $(CFLAGS)
 	
+testdom: dominion.o player playdom
+	gcc -fprofile-arcs -ftest-coverage testdominion.c -g dominion.o rngs.o interface.o $(CFLAGS)
+	./a 42
+	gcov dominion.c >> tester.out
+
+	
+tarantula:
+	make clean
+	gcc tarantula.c -o tarantula
+	./tarantula
+	
 	
 diff: dominion.o player playdom
 	gcc -fprofile-arcs -ftest-coverage testdominion.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 	./a 42
 	gcov -f -b dominion.c > diff.out
-
+	gcc run.c -o run
 	./run domin1 domin2 42
 	
 clean:
-	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM
+	rm -f *.o playdom.exe playdom test.exe test player unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.a *.dSYM *.exe *.gch  *.stackdump

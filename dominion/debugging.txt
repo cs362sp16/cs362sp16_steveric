@@ -1,0 +1,42 @@
+Debugging.txt: 
+
+In this file i will explain how i fixed a bug in my own code by using
+the gnu debugger.
+
+In my unittest4.c file I tested the getCost() function that is in the
+dominion.c file. The purpose of this function is to return how much a
+particular card costs to buy. When running the test I was getting a
++/- 25% fail test rate. I wanted to solve this bug. I will no explain
+how I did.
+
+Unittest4 is the test that caught the bug. It works by harcoding the 
+known cost values of each card into an array and checking the return
+of the getCost() function aginst the hard coded value. It results in
+a failure when the return does not match the hard coded cost value of
+the card. 
+
+GDB was very useful for solving this problem. By placing a breakpoint
+at the end of each loop of the test, I was able to catch the exact 
+instant in which there was a failure. After I got to the point in the
+test where there had just been a failure, I was able to use the GDB 
+print function in order to look at the variables values at the time of
+the failure. 
+
+When inspecting the variables i was able to see that the failure was 
+occouring when the random number generator handed the test a 9. This
+meant that that the council room card int the getCost() was set to 
+have the wrong value returned. 
+
+Knowing this I was able to go back to the dominion rule book, look up
+the value, and change it in the getCost() function. After doing this
+the unittest passed 100 percent of the time.
+
+Some of David Agans rules were helpful to me in this:
+#3: Quit Thinking and Look - the exhaustive method of setting a breakpoint
+at the beginning of cach loop was not the most efficent way to find fails
+but it got the job done.
+#4: If you didnt fix it it aint fixed - At one point I tried to fix the bug
+by changing the range of the random vairables that would be sent into the
+function. I was able to get the test to pass 100% if the time, but I
+knew that I hadent done anything to fix the problem that was causing the
+bug in the dominion.c file. I knew that this was not the solution.  

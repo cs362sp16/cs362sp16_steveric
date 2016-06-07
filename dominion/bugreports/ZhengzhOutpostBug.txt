@@ -1,0 +1,28 @@
+Smith Bug Report: 
+Date: June 6, 2016
+Report Author: Eric Stevens
+
+Description:
+The functionality of the outpost card is not working properly. The result of
+playing the outpost card is supposed to be a decreased draw at the end of 
+the clean up phase and the ability to take one more, for a maximum of two
+turns total. Neither of these functionalities are built into the system.
+
+Occourance:
+Whenever the outpost card is played the bug will present itsself.
+
+Fix:
+there is already a variable built to track the status of the outpost card.
+adding and if statement that looks to see if the outpost has been played 
+and then changes the number of turns left and the number of cards to be 
+drawn at clean up should fix this problem.
+
+Severity:
+This problem is of medium severity. This completly defeats the purpose of 
+using the card, but it is not as popular of a card as others. 
+
+Priority:
+The complex nature of the fix makes this card less desirable to fix. Medium 
+priority should be placed on fixing this bug.
+
+
